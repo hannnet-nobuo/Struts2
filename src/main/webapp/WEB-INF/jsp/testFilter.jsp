@@ -7,25 +7,6 @@
 	<s:head />
 </head>
 <body>
-<jsp:useBean id="bordData" scope="application" class="jp.hannet.test.beans.DataList" />
-	<s:form action="testFilter">
-		<s:textfield label="タイトル" name="title" />
-		<s:textfield label="メッセージ" name="msg" />
-		<s:submit />
-	</s:form>
-<table>
-<tr>
-	<th>タイトル</th>
-	<th>メッセージ</th>
-	<th>時間</th>
-</tr>
-<s:iterator value="bordData.data">
-  <tr>
-  <td><s:property value="title" /></td>
-  <td><s:property value="msg" /></td>
-  <td><s:property value="date" /></td>
-  </tr>
-</s:iterator>
-</table>
+	<p>フィルターのテストです。うまく行けばコンソールに文字が表示されます。</p>
 </body>
 </html>

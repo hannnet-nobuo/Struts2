@@ -32,7 +32,7 @@
             <allowed-methods>action1,action2</allowed-methods> 
         </action>
 
-        <action name="testFilter" class="jp.hannet.test.MessageBordAction">
+        <action name="testFilter" class="jp.hannet.test.TestFilterAction">
             <result>/WEB-INF/jsp/testFilter.jsp</result>
         </action>
 
@@ -53,6 +53,10 @@
 
         <action name="message" class="jp.hannet.test.MessageAction">
             <result>/WEB-INF/jsp/message.jsp</result>            
+        </action>
+
+        <action name="hibernate" class="jp.hannet.test.HibernateAction">
+            <result>/WEB-INF/jsp/hibernate.jsp</result>            
         </action>
 
     </package>

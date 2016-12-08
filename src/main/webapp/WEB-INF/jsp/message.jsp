@@ -8,7 +8,7 @@
 </head>
 <body>
 	<p>message</p>
-	<s:text name="global.key"></s:text>
+	<s:text name="some.key"></s:text>
 	
 	<a href="<s:url  namespace="/" action="message" >
 	   <s:param name="request_locale" >en</s:param>

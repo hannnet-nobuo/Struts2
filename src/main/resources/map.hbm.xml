@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="jp.hannet.test.beans.MyMapping" table="test1">
+		<id name="id" type="string" unsaved-value="null">
+			<column name="id" sql-type="char(20)" not-null="true" />
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name" type="string" column="name" />
+		<property name="memo" type="string" column="memo" />
+	</class>
+</hibernate-mapping>
