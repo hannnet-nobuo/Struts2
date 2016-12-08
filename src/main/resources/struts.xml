@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    
+    <constant name="struts.custom.i18n.resources" value="globalmessages"></constant>
+    
+
+    <package name="myPackage" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <action name="index" class="jp.hannet.test.IndexAction">
+            <result>/WEB-INF/jsp/index.jsp</result>
+        </action>
+
+        <action name="helloWorld" class="jp.hannet.test.HelloWorldAction">
+            <result name="input">/WEB-INF/jsp/index.jsp</result>
+            <result>/WEB-INF/jsp/helloWorld.jsp</result>
+        </action>
+
+        <action name="messageBord" class="jp.hannet.test.MessageBordAction">
+            <result>/WEB-INF/jsp/messageBord.jsp</result>
+        </action>
+
+        <action name="dispatch" class="jp.hannet.test.DispatchAction">
+            <result>/WEB-INF/jsp/dispatch.jsp</result>
+            <allowed-methods>action1,action2</allowed-methods> 
+        </action>
+
+        <action name="testFilter" class="jp.hannet.test.MessageBordAction">
+            <result>/WEB-INF/jsp/testFilter.jsp</result>
+        </action>
+
+        <action name="token1" class="jp.hannet.test.Token1Action">
+            <result>/WEB-INF/jsp/token1.jsp</result>            
+        </action>
+        
+        <action name="token2" class="jp.hannet.test.Token2Action">
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<result name="invalid.token">/WEB-INF/jsp/tokenInvalid.jsp</result>
+            <result>/WEB-INF/jsp/token2.jsp</result>
+        </action>
+        
+        <action name="tokenInvalid" class="jp.hannet.test.TokenInvalidAction">
+            <result>/WEB-INF/jsp/tokenInvalid.jsp</result>
+        </action>
+
+        <action name="message" class="jp.hannet.test.MessageAction">
+            <result>/WEB-INF/jsp/message.jsp</result>            
+        </action>
+
+    </package>
+
+</struts>
