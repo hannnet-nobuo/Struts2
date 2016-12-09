@@ -59,6 +59,16 @@
             <result>/WEB-INF/jsp/hibernate.jsp</result>            
         </action>
 
+        <action name="hiSearch" class="jp.hannet.test.HiSearchAction">
+            <result>/WEB-INF/jsp/hiSearch.jsp</result>            
+        </action>
+        <action name="hiEdit" class="jp.hannet.test.HiEditAction">
+            <result>/WEB-INF/jsp/hiEdit.jsp</result>            
+        </action>
+        <action name="hiNew" class="jp.hannet.test.HiNewAction">
+            <result>/WEB-INF/jsp/hiNew.jsp</result>            
+        </action>
+
     </package>
 
 </struts>

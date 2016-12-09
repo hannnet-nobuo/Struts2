@@ -17,9 +17,11 @@ package jp.hannet.test;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -27,13 +29,31 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import jp.hannet.test.beans.MyMapping;
 
-public class HibernateAction extends ActionSupport {
+public class HiSearchAction extends ActionSupport {
     
-	private static final long serialVersionUID = -7387776517903121938L;
+	private static final long serialVersionUID = 761698363602136320L;
 
 	private List<MyMapping> myMappings ;
+	private String delid;
+	private String s_id;
     
-    public List<MyMapping> getMyMappings() {
+    public String getS_id() {
+		return s_id;
+	}
+
+	public void setS_id(String s_id) {
+		this.s_id = s_id;
+	}
+
+	public String getDelid() {
+		return delid;
+	}
+
+	public void setDelid(String delid) {
+		this.delid = delid;
+	}
+
+	public List<MyMapping> getMyMappings() {
 		return myMappings;
 	}
 
@@ -46,6 +66,7 @@ public class HibernateAction extends ActionSupport {
 				.build();
 		
 		Session session = null;
+		Transaction txn = null;
 		try {
 			// セッション取得
 			session = new MetadataSources( registry )
@@ -53,12 +74,30 @@ public class HibernateAction extends ActionSupport {
 						.buildSessionFactory()
 						.openSession();
 			
+			if(this.delid != null) {
+				// トランザクション取得
+				txn = session.getTransaction();
+				// トランザクション開始
+				txn.begin();
+				MyMapping delMap = new MyMapping();
+				delMap.setId(delid);
+				// 削除
+				session.delete(delMap);
+				// トランザクションコミット
+				txn.commit();
+			}
 			// creiteria詳細は以下のURL
 			// http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#criteria
-			CriteriaQuery<MyMapping> cr = session.getCriteriaBuilder()
-												.createQuery(MyMapping.class);
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<MyMapping> cr = builder.createQuery(MyMapping.class);
 			Root<MyMapping> root = cr.from( MyMapping.class );
 			cr.select(root);
+			
+			if (s_id != null && !"".equals(s_id.trim())) {
+				cr.where(
+						builder.equal(root.get("id"), s_id)
+						);
+			}
 			
 			// 結果取得
 			myMappings = session.createQuery(cr)
