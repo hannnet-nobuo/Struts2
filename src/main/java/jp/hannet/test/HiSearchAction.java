@@ -95,7 +95,7 @@ public class HiSearchAction extends ActionSupport {
 			
 			if (s_id != null && !"".equals(s_id.trim())) {
 				cr.where(
-						builder.equal(root.get("id"), s_id)
+						builder.like(root.<String>get("id"), "%" + s_id + "%")
 						);
 			}
 			

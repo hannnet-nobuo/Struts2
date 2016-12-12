@@ -15,29 +15,19 @@
  */
 package jp.hannet.test;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
-import org.apache.struts2.dispatcher.HttpParameters;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 import com.opensymphony.xwork2.ActionSupport;
 import jp.hannet.test.beans.MyMapping;
+import jp.hannet.test.dao.MyMappingDao;
 
 public class HiNewAction extends ActionSupport {
-    
+
 	private static final long serialVersionUID = 5294876177832560670L;
 	private String id;
 	private String name;
 	private String memo;
 	private String insert;
 	private String msg;
-	
+
 	public String getMsg() {
 		return msg;
 	}
@@ -75,52 +65,21 @@ public class HiNewAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
-		
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure()
-				.build();
 		msg = "";
-		Session session = null;
-		Transaction txn = null;
-		try {
-			session = new MetadataSources( registry )
-					.buildMetadata()
-					.buildSessionFactory()
-					.openSession();
-			
-			if (id != null) {
-				// セッション取得
-				
-				if (session.createQuery(
-						"select count(id) from MyMapping map where map.id = :id"
-						, Long.class)
-						.setParameter("id", id)
-						.getSingleResult() == 0) {
-					
-					MyMapping map = new MyMapping();
-					map.setId(id);
-					map.setName(name);
-					map.setMemo(memo);
-					
-					txn = session.getTransaction();
-					txn.begin();
-					session.save(map);
-					txn.commit();
-					msg = "書き込みました";
-				} else {
-					msg = "すでに存在するIDです";
-				}
-				
+		MyMappingDao dao = new MyMappingDao();
+		if (id != null) {
+			// セッション取得
+			if (!dao.existById(id)) {
+				MyMapping map = new MyMapping();
+				map.setId(id);
+				map.setName(name);
+				map.setMemo(memo);
+				dao.save(map);
+				msg = "書き込みました";
+			} else {
+				msg = "すでに存在するIDです";
 			}
-			
-		} catch (RuntimeException ex) {
-			StandardServiceRegistryBuilder.destroy( registry );
-			throw ex;
-		} finally {
-			if (session != null)
-				session.close();
 		}
-        return SUCCESS;
-    }
-
+		return SUCCESS;
+	}
 }

@@ -15,15 +15,17 @@
  */
 package jp.hannet.test;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 import com.opensymphony.xwork2.Action;
 
 /**
  * 
  */
-public class IndexActionTest extends TestCase {
+public class IndexActionTest {
     
+	@Test
     public void testIndexAction() throws Exception {
         IndexAction action = new IndexAction();
         String result = action.execute();

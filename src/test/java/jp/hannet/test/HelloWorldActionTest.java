@@ -15,15 +15,17 @@
  */
 package jp.hannet.test;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 import com.opensymphony.xwork2.Action;
 
 /**
  * 
  */
-public class HelloWorldActionTest extends TestCase {
+public class HelloWorldActionTest {
     
+	@Test
     public void testHelloWorldAction() throws Exception {
         HelloWorldAction action = new HelloWorldAction();
         String result = action.execute();
