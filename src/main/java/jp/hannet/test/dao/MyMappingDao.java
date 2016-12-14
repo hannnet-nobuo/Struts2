@@ -17,8 +17,6 @@ public class MyMappingDao {
 	
 	public List<MyMapping> likeById(String id) {
 		
-		// creiteria詳細は以下のURL
-		// http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#criteria
 		Session session = DbAccess.getSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		
@@ -28,8 +26,8 @@ public class MyMappingDao {
 		
 		if (id != null && !"".equals(id.trim())) {
 			cr.where(
-					builder.like(root.<String>get("id"), "%" + id + "%")
-					);
+				builder.like(root.<String>get("id"), "%" + id + "%")
+				);
 		}
 		
 		// 結果取得
@@ -45,7 +43,9 @@ public class MyMappingDao {
 				session = DbAccess.getSession();
 				
 				@SuppressWarnings("unchecked")
-				Query<Long> q = session.getNamedQuery("existById").setParameter("id", id);
+				Query<Long> q = session
+								.getNamedQuery("existById")
+								.setParameter("id", id);
 				
 				if (q.getSingleResult() > 0) {
 					re = true;
