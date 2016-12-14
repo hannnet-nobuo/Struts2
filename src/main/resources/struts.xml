@@ -69,6 +69,16 @@
             <result>/WEB-INF/jsp/hiNew.jsp</result>            
         </action>
 
+        <action name="springSearch" class="springSearchAction">
+            <result>/WEB-INF/jsp/springSearch.jsp</result>            
+        </action>
+        <action name="springEdit" class="springEditAction">
+            <result>/WEB-INF/jsp/springEdit.jsp</result>            
+        </action>
+        <action name="springNew" class="springNewAction">
+            <result>/WEB-INF/jsp/springNew.jsp</result>            
+        </action>
+
     </package>
 
 </struts>
