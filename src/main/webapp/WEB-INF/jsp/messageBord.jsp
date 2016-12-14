@@ -7,7 +7,7 @@
 	<s:head />
 </head>
 <body>
-<jsp:useBean id="bordData" scope="application" class="jp.hannet.test.beans.DataList" />
+<jsp:useBean id="bordData" scope="application" class="jp.hannet.sample.model.DataList" />
 	<s:form action="messageBord">
 		<s:textfield label="タイトル" name="title" />
 		<s:textfield label="メッセージ" name="msg" />

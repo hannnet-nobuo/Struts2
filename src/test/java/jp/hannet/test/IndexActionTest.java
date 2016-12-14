@@ -20,6 +20,8 @@ import org.junit.Test;
 
 import com.opensymphony.xwork2.Action;
 
+import jp.hannet.sample.action.IndexAction;
+
 /**
  * 
  */

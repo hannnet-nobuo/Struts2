@@ -43,20 +43,20 @@
         </property>
 	</bean>
 		
-	<bean id="myMappingDao" class="jp.hannet.test.dao.MyMappingDaoImp">
+	<bean id="myMappingDao" class="jp.hannet.sample.dao.MyMappingDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="myMappingService" class="jp.hannet.test.service.MyMappingServiceImp">
+	<bean id="myMappingService" class="jp.hannet.sample.service.MyMappingServiceImp">
 		<property name="dao" ref="myMappingDao" />
 	</bean>
 	
-	<bean id="springEditAction" class="jp.hannet.test.SpringEditAction" scope="prototype">
+	<bean id="springEditAction" class="jp.hannet.sample.action.SpringEditAction" scope="prototype">
     	<property name="myMappingService" ref="myMappingService" />
  	</bean>
-	<bean id="springNewAction" class="jp.hannet.test.SpringNewAction" scope="prototype">
+	<bean id="springNewAction" class="jp.hannet.sample.action.SpringNewAction" scope="prototype">
     	<property name="myMappingService" ref="myMappingService" />
  	</bean>
-	<bean id="springSearchAction" class="jp.hannet.test.SpringSearchAction" scope="prototype">
+	<bean id="springSearchAction" class="jp.hannet.sample.action.SpringSearchAction" scope="prototype">
     	<property name="myMappingService" ref="myMappingService" />
  	</bean>
 	

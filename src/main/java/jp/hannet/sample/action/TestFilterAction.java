@@ -13,25 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.hannet.test;
+package jp.hannet.sample.action;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import com.opensymphony.xwork2.ActionSupport;
 
-import com.opensymphony.xwork2.Action;
-
-import jp.hannet.sample.action.HelloWorldAction;
-
-/**
- * 
- */
-public class HelloWorldActionTest {
+public class TestFilterAction extends ActionSupport {
     
-	@Test
-    public void testHelloWorldAction() throws Exception {
-        HelloWorldAction action = new HelloWorldAction();
-        String result = action.execute();
-        assertEquals(Action.SUCCESS, result);
+	private static final long serialVersionUID = 8149138895836274421L;
+
+	public String execute() throws Exception {
+        return SUCCESS;
     }
 }
-

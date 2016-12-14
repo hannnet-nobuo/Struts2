@@ -4,7 +4,7 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="jp.hannet.test.beans.MyMapping" table="test1">
+	<class name="jp.hannet.sample.model.MyMapping" table="test1">
 		<id name="id" type="string" unsaved-value="null">
 			<column name="id" sql-type="char(20)" not-null="true" />
 			<generator class="assigned"></generator>

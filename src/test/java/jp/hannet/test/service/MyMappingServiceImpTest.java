@@ -8,7 +8,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import jp.hannet.test.beans.MyMapping;
+
+import jp.hannet.sample.model.MyMapping;
+import jp.hannet.sample.service.IMyMappingService;
 
 public class MyMappingServiceImpTest {
 

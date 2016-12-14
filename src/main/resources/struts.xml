@@ -14,58 +14,58 @@
 
         <default-action-ref name="index" />
 
-        <action name="index" class="jp.hannet.test.IndexAction">
+        <action name="index" class="jp.hannet.sample.action.IndexAction">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 
-        <action name="helloWorld" class="jp.hannet.test.HelloWorldAction">
+        <action name="helloWorld" class="jp.hannet.sample.action.HelloWorldAction">
             <result name="input">/WEB-INF/jsp/index.jsp</result>
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
         </action>
 
-        <action name="messageBord" class="jp.hannet.test.MessageBordAction">
+        <action name="messageBord" class="jp.hannet.sample.action.MessageBordAction">
             <result>/WEB-INF/jsp/messageBord.jsp</result>
         </action>
 
-        <action name="dispatch" class="jp.hannet.test.DispatchAction">
+        <action name="dispatch" class="jp.hannet.sample.action.DispatchAction">
             <result>/WEB-INF/jsp/dispatch.jsp</result>
             <allowed-methods>action1,action2</allowed-methods> 
         </action>
 
-        <action name="testFilter" class="jp.hannet.test.TestFilterAction">
+        <action name="testFilter" class="jp.hannet.sample.action.TestFilterAction">
             <result>/WEB-INF/jsp/testFilter.jsp</result>
         </action>
 
-        <action name="token1" class="jp.hannet.test.Token1Action">
+        <action name="token1" class="jp.hannet.sample.action.Token1Action">
             <result>/WEB-INF/jsp/token1.jsp</result>            
         </action>
         
-        <action name="token2" class="jp.hannet.test.Token2Action">
+        <action name="token2" class="jp.hannet.sample.action.Token2Action">
         	<interceptor-ref name="token"></interceptor-ref>
         	<interceptor-ref name="defaultStack"></interceptor-ref>
         	<result name="invalid.token">/WEB-INF/jsp/tokenInvalid.jsp</result>
             <result>/WEB-INF/jsp/token2.jsp</result>
         </action>
         
-        <action name="tokenInvalid" class="jp.hannet.test.TokenInvalidAction">
+        <action name="tokenInvalid" class="jp.hannet.sample.action.TokenInvalidAction">
             <result>/WEB-INF/jsp/tokenInvalid.jsp</result>
         </action>
 
-        <action name="message" class="jp.hannet.test.MessageAction">
+        <action name="message" class="jp.hannet.sample.action.MessageAction">
             <result>/WEB-INF/jsp/message.jsp</result>            
         </action>
 
-        <action name="hibernate" class="jp.hannet.test.HibernateAction">
+        <action name="hibernate" class="jp.hannet.sample.action.HibernateAction">
             <result>/WEB-INF/jsp/hibernate.jsp</result>            
         </action>
 
-        <action name="hiSearch" class="jp.hannet.test.HiSearchAction">
+        <action name="hiSearch" class="jp.hannet.sample.action.HiSearchAction">
             <result>/WEB-INF/jsp/hiSearch.jsp</result>            
         </action>
-        <action name="hiEdit" class="jp.hannet.test.HiEditAction">
+        <action name="hiEdit" class="jp.hannet.sample.action.HiEditAction">
             <result>/WEB-INF/jsp/hiEdit.jsp</result>            
         </action>
-        <action name="hiNew" class="jp.hannet.test.HiNewAction">
+        <action name="hiNew" class="jp.hannet.sample.action.HiNewAction">
             <result>/WEB-INF/jsp/hiNew.jsp</result>            
         </action>
 

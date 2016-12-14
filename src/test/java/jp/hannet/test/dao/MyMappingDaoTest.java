@@ -6,7 +6,8 @@ import org.apache.commons.lang3.RandomStringUtils;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jp.hannet.test.beans.MyMapping;
+import jp.hannet.sample.dao.MyMappingDao;
+import jp.hannet.sample.model.MyMapping;
 
 public class MyMappingDaoTest {
 
