@@ -16,6 +16,7 @@
 package jp.hannet.sample.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.conversion.annotations.Conversion;
 
 public class MessageAction extends ActionSupport {
     

@@ -1,4 +1,4 @@
-package jp.hannet.test.dao;
+package jp.hannet.sample.dao;
 
 import java.util.List;
 

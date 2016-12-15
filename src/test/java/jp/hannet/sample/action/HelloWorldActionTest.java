@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jp.hannet.test;
+package jp.hannet.sample.action;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

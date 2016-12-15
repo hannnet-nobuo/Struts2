@@ -29,7 +29,7 @@
     
     <filter>
         <filter-name>test-filter</filter-name>
-        <filter-class>jp.hannet.test.filter.TestFilter</filter-class>
+        <filter-class>jp.hannet.sample.filter.TestFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>test-filter</filter-name>

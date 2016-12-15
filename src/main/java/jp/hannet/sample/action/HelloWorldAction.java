@@ -30,7 +30,7 @@ public class HelloWorldAction extends ActionSupport {
     private Date now;
     private String name;
     
-    @TypeConversion(converter = "jp.hannet.test.DateConverter")
+    @TypeConversion(converter = "jp.hannet.sample.common.DateConverter")
     @RequiredFieldValidator(message = "Please enter the date")
     public void setDateNow(Date now) { this.now = now; }
     public Date getDateNow() { return now; }

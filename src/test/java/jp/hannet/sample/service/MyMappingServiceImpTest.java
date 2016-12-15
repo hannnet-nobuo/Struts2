@@ -1,4 +1,4 @@
-package jp.hannet.test.service;
+package jp.hannet.sample.service;
 
 import static org.junit.Assert.*;
 
@@ -52,8 +52,7 @@ public class MyMappingServiceImpTest {
 		service.save(map);
 		
 		// DBからIDで取得
-		List<MyMapping> maps = service.likeById(id);
-		MyMapping mapre = maps.get(0);
+		MyMapping mapre = service.selectById(id);
 
 		// 書き込んだデータが取得できているか検証
 		assertEquals(id, mapre.getId());

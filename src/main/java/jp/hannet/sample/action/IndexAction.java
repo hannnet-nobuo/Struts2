@@ -30,7 +30,7 @@ public class IndexAction extends ActionSupport {
 
 	private Date now = new Date(System.currentTimeMillis());
     
-    @TypeConversion(converter = "jp.hannet.test.DateConverter")
+    @TypeConversion(converter = "jp.hannet.sample.common.DateConverter")
     public Date getDateNow() { return now; }
     
     public String execute() throws Exception {
