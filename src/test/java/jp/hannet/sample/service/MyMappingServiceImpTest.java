@@ -15,7 +15,7 @@ import jp.hannet.sample.service.IMyMappingService;
 public class MyMappingServiceImpTest {
 
 	private IMyMappingService service;
-	
+
 	private final static String TEST_ID = "test2";
 
 	@Before
@@ -35,7 +35,7 @@ public class MyMappingServiceImpTest {
 	public void testLikeById() {
 		List<MyMapping> maps = service.likeById(TEST_ID);
 		assertEquals(1, maps.size());
-		
+
 	}
 
 	@Test
@@ -50,7 +50,7 @@ public class MyMappingServiceImpTest {
 		map.setMemo(memo);
 		// DBに書き込む
 		service.save(map);
-		
+
 		// DBからIDで取得
 		MyMapping mapre = service.selectById(id);
 
@@ -58,10 +58,10 @@ public class MyMappingServiceImpTest {
 		assertEquals(id, mapre.getId());
 		assertEquals(name, mapre.getName());
 		assertEquals(memo, mapre.getMemo());
-		
+
 		// テストが終わったらゴミデータ削除
 		service.delete(map);
-		
+
 		// DBからIDで取得
 		List<MyMapping> deleteMaps = service.likeById(id);
 		assertEquals(0, deleteMaps.size());
@@ -79,7 +79,7 @@ public class MyMappingServiceImpTest {
 
 		List<MyMapping> updatemaps = service.likeById(TEST_ID);
 		MyMapping updatemap = updatemaps.get(0);
-		
+
 		assertEquals(name, updatemap.getName());
 		assertEquals(memo, updatemap.getMemo());
 	}

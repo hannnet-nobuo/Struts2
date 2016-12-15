@@ -17,11 +17,11 @@ import jp.hannet.sample.model.MyMapping;
 public class MyMappingDaoImp implements IMyMappingDao {
 
 	private SessionFactory sessionFactory;
-	
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	private Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
@@ -32,11 +32,10 @@ public class MyMappingDaoImp implements IMyMappingDao {
 			Session session = getSession();
 			CriteriaBuilder builder = session.getCriteriaBuilder();
 			CriteriaQuery<MyMapping> cr = builder.createQuery(MyMapping.class);
-			Root<MyMapping> root = cr.from( MyMapping.class );
-		
-			cr.select(root)
-				.where(builder.equal(root.<String>get("id"),  id ));
-			
+			Root<MyMapping> root = cr.from(MyMapping.class);
+
+			cr.select(root).where(builder.equal(root.<String>get("id"), id));
+
 			map = session.createQuery(cr).getSingleResult();
 
 		}
@@ -47,13 +46,11 @@ public class MyMappingDaoImp implements IMyMappingDao {
 		Session session = getSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<MyMapping> cr = builder.createQuery(MyMapping.class);
-		Root<MyMapping> root = cr.from( MyMapping.class );
+		Root<MyMapping> root = cr.from(MyMapping.class);
 		cr.select(root);
-		
+
 		if (id != null && !"".equals(id.trim())) {
-			cr.where(
-					builder.like(root.<String>get("id"), "%" + id + "%")
-					);
+			cr.where(builder.like(root.<String>get("id"), "%" + id + "%"));
 		}
 		return session.createQuery(cr).getResultList();
 	}
@@ -64,7 +61,7 @@ public class MyMappingDaoImp implements IMyMappingDao {
 			Session session = getSession();
 			@SuppressWarnings("unchecked")
 			Query<Long> q = session.getNamedQuery("existById").setParameter("id", id);
-			
+
 			if (q.getSingleResult() > 0) {
 				re = true;
 			}
@@ -82,8 +79,7 @@ public class MyMappingDaoImp implements IMyMappingDao {
 
 	public void update(MyMapping map) {
 		getSession().update(map);
-		
-	}
 
+	}
 
 }

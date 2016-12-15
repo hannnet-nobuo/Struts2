@@ -14,12 +14,12 @@ public class SpringNewAction extends ActionSupport {
 	private String insert;
 	private String msg;
 
-	private IMyMappingService myMappingService; 
-	
+	private IMyMappingService myMappingService;
+
 	public void setMyMappingService(IMyMappingService myMappingService) {
 		this.myMappingService = myMappingService;
 	}
-	
+
 	public String getMsg() {
 		return msg;
 	}

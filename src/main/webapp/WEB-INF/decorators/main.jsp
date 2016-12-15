@@ -44,6 +44,7 @@
           <li><a href="token1.action">トークン</a></li>
           <li><a href="hibernate.action">Hibernateテスト</a></li>
           <li><a href="hiSearch.action">Hibernate編集</a></li>
+          <li><a href="springSearch.action">Spring編集</a></li>
         </ul>
       </div>
     </div>
