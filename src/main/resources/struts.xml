@@ -9,7 +9,6 @@
     
     <constant name="struts.custom.i18n.resources" value="globalmessages"></constant>
     
-    <!-- <constant name="struts.convention.result.path" value="/" /> -->
     <constant name="struts.convention.result.path" value="/WEB-INF/jsp/"/>
     
 
