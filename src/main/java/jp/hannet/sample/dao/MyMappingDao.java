@@ -15,6 +15,28 @@ import jp.hannet.sample.model.MyMapping;
 
 public class MyMappingDao {
 	
+	
+	public MyMapping selectById(String id) {
+		
+		MyMapping map = null;
+		if (id != null) {
+			Session session = DbAccess.getSession();
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<MyMapping> cr = builder.createQuery(MyMapping.class);
+			
+			Root<MyMapping> root = cr.from( MyMapping.class );
+			cr.select(root)
+			.where(
+					builder.equal(root.get("id"), id)
+					);
+			
+			// 結果取得
+			map = (MyMapping) session.createQuery(cr)
+					.getSingleResult();
+		}
+		return map;
+	}
+	
 	public List<MyMapping> likeById(String id) {
 		
 		Session session = DbAccess.getSession();

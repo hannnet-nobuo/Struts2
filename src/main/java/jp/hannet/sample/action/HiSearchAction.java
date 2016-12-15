@@ -28,6 +28,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import jp.hannet.sample.dao.MyMappingDao;
 import jp.hannet.sample.model.MyMapping;
 
 public class HiSearchAction extends ActionSupport {
@@ -59,58 +60,16 @@ public class HiSearchAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
-		// 詳細は以下のURL
-		// http://docs.jboss.org/hibernate/orm/5.2/quickstart/html_single/#hibernate-gsg-tutorial-basic-config
-		// A SessionFactory is set up once for an application!
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure() // configures settings from hibernate.cfg.xml
-				.build();
 		
-		Session session = null;
-		Transaction txn = null;
-		try {
-			// セッション取得
-			session = new MetadataSources( registry )
-						.buildMetadata()
-						.buildSessionFactory()
-						.openSession();
-			
-			if(this.delid != null) {
-				// トランザクション取得
-				txn = session.getTransaction();
-				// トランザクション開始
-				txn.begin();
-				MyMapping delMap = new MyMapping();
-				delMap.setId(delid);
-				// 削除
-				session.delete(delMap);
-				// トランザクションコミット
-				txn.commit();
-			}
-			// creiteria詳細は以下のURL
-			// http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#criteria
-			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<MyMapping> cr = builder.createQuery(MyMapping.class);
-			Root<MyMapping> root = cr.from( MyMapping.class );
-			cr.select(root);
-			
-			if (s_id != null && !"".equals(s_id.trim())) {
-				cr.where(
-						builder.like(root.<String>get("id"), "%" + s_id + "%")
-						);
-			}
-			
-			// 結果取得
-			myMappings = session.createQuery(cr)
-									.getResultList();
-			
-		} catch (RuntimeException ex) {
-			StandardServiceRegistryBuilder.destroy( registry );
-			throw ex;
-		} finally {
-			if (session != null)
-				session.close();
+		MyMappingDao dao = new MyMappingDao();
+		if(this.delid != null) {
+			MyMapping delMap = new MyMapping();
+			delMap.setId(delid);
+			// 削除
+			dao.delete(delMap);
 		}
+		// 結果取得
+		myMappings = dao.likeById(s_id);
         return SUCCESS;
     }
 

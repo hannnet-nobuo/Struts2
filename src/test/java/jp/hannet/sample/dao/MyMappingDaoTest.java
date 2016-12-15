@@ -23,6 +23,11 @@ public class MyMappingDaoTest {
 	}
 
 	@Test
+	public void selectById() {
+		assertNotNull(dao.selectById(TEST_ID));
+	}
+	
+	@Test
 	public void save() {
 		// ランダムな10個の文字列生成
 		String id = RandomStringUtils.randomAscii(10);
